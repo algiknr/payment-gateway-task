@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.checkout.payment.gateway.model.ErrorResponse;
 import com.checkout.payment.gateway.model.PostPaymentRequest;
 import com.checkout.payment.gateway.model.PostPaymentResponse;
 import com.checkout.payment.gateway.service.PaymentGatewayService;
@@ -35,7 +36,10 @@ public class PaymentGatewayController {
       content = @Content(mediaType = "application/json",
           schema = @Schema(implementation = PostPaymentResponse.class),
           examples = @ExampleObject(value = "{\"id\":\"f1a2b3c4-d5e6-7890-abcd-ef1234567890\",\"status\":\"Authorized\",\"cardNumberLastFour\":8877,\"expiryMonth\":4,\"expiryYear\":2025,\"currency\":\"GBP\",\"amount\":100}")))
-  @ApiResponse(responseCode = "404", description = "Payment not found")
+  @ApiResponse(responseCode = "404", description = "Payment not found",
+      content = @Content(mediaType = "application/json",
+          schema = @Schema(implementation = ErrorResponse.class),
+          examples = @ExampleObject(value = "{\"message\":\"Payment not found\"}")))
   @GetMapping("/payment/{id}")
   public ResponseEntity<PostPaymentResponse> getPostPaymentEventById(@PathVariable UUID id) {
     return new ResponseEntity<>(paymentGatewayService.getPaymentById(id), HttpStatus.OK);
@@ -46,10 +50,10 @@ public class PaymentGatewayController {
       content = @Content(mediaType = "application/json",
           schema = @Schema(implementation = PostPaymentResponse.class),
           examples = @ExampleObject(value = "{\"id\":\"f1a2b3c4-d5e6-7890-abcd-ef1234567890\",\"status\":\"Authorized\",\"cardNumberLastFour\":8877,\"expiryMonth\":4,\"expiryYear\":2025,\"currency\":\"GBP\",\"amount\":100}")))
-  @ApiResponse(responseCode = "400", description = "Validation error — payment rejected",
+  @ApiResponse(responseCode = "400", description = "Validation error, payment rejected",
       content = @Content(mediaType = "application/json",
           schema = @Schema(implementation = PostPaymentResponse.class),
-          examples = @ExampleObject(value = "{\"status\":\"Rejected\"}")))
+          examples = @ExampleObject(value = "{\"id\":null,\"status\":\"Rejected\",\"cardNumberLastFour\":0,\"expiryMonth\":0,\"expiryYear\":0,\"currency\":null,\"amount\":0}")))
   @PostMapping("/payment")
   public ResponseEntity<PostPaymentResponse> processPayment(@Valid @RequestBody PostPaymentRequest request) {
     return new ResponseEntity<>(paymentGatewayService.processPayment(request), HttpStatus.CREATED);
