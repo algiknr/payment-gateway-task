@@ -28,7 +28,7 @@ public class PostPaymentRequest implements Serializable {
   @Max(value = 12, message = "Expiry month must be between 1 and 12")
   private Integer expiryMonth;
 
-  @Schema(example = "2025")
+  @Schema(example = "2027")
   @JsonProperty("expiry_year")
   @NotNull
   private Integer expiryYear;

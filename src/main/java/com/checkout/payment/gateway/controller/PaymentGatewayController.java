@@ -35,7 +35,7 @@ public class PaymentGatewayController {
   @ApiResponse(responseCode = "200", description = "Payment found",
       content = @Content(mediaType = "application/json",
           schema = @Schema(implementation = PostPaymentResponse.class),
-          examples = @ExampleObject(value = "{\"id\":\"f1a2b3c4-d5e6-7890-abcd-ef1234567890\",\"status\":\"Authorized\",\"cardNumberLastFour\":8877,\"expiryMonth\":4,\"expiryYear\":2025,\"currency\":\"GBP\",\"amount\":100}")))
+          examples = @ExampleObject(value = "{\"id\":\"f1a2b3c4-d5e6-7890-abcd-ef1234567890\",\"status\":\"Authorized\",\"cardNumberLastFour\":8877,\"expiryMonth\":4,\"expiryYear\":2027,\"currency\":\"GBP\",\"amount\":100}")))
   @ApiResponse(responseCode = "404", description = "Payment not found",
       content = @Content(mediaType = "application/json",
           schema = @Schema(implementation = ErrorResponse.class),
@@ -49,7 +49,7 @@ public class PaymentGatewayController {
   @ApiResponse(responseCode = "201", description = "Payment processed",
       content = @Content(mediaType = "application/json",
           schema = @Schema(implementation = PostPaymentResponse.class),
-          examples = @ExampleObject(value = "{\"id\":\"f1a2b3c4-d5e6-7890-abcd-ef1234567890\",\"status\":\"Authorized\",\"cardNumberLastFour\":8877,\"expiryMonth\":4,\"expiryYear\":2025,\"currency\":\"GBP\",\"amount\":100}")))
+          examples = @ExampleObject(value = "{\"id\":\"f1a2b3c4-d5e6-7890-abcd-ef1234567890\",\"status\":\"Authorized\",\"cardNumberLastFour\":8877,\"expiryMonth\":4,\"expiryYear\":2027,\"currency\":\"GBP\",\"amount\":100}")))
   @ApiResponse(responseCode = "400", description = "Validation error, payment rejected",
       content = @Content(mediaType = "application/json",
           schema = @Schema(implementation = PostPaymentResponse.class),
