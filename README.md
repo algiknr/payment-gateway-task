@@ -1,6 +1,6 @@
 # Payment Gateway
 
-> A REST API that sits between a merchant and an acquiring bank, enabling merchants to process card payments securely.
+> A REST API that sits between a merchant and an acquiring bank, enabling merchants to process card payments.
 
 ---
 
@@ -17,7 +17,7 @@
 
 **1.** Start the bank simulator:
 ```bash
-docker-compose up -d
+docker compose up -d
 ```
 
 **2.** Run the application:
@@ -38,7 +38,7 @@ docker-compose up -d
 
 ## Endpoints
 
-### `POST /payment` — Process a new payment
+### `POST /payment` â€” Process a new payment
 
 <details>
 <summary><b>Request</b></summary>
@@ -66,7 +66,7 @@ docker-compose up -d
 </details>
 
 <details>
-<summary><b>201 Created</b> — Payment processed (Authorized / Declined)</summary>
+<summary><b>201 Created</b> â€” Payment processed (Authorized / Declined)</summary>
 
 ```json
 {
@@ -83,7 +83,7 @@ docker-compose up -d
 </details>
 
 <details>
-<summary><b>400 Bad Request</b> — Validation failed (Rejected)</summary>
+<summary><b>400 Bad Request</b> â€” Validation failed (Rejected)</summary>
 
 ```json
 {
@@ -101,10 +101,10 @@ docker-compose up -d
 
 ---
 
-### `GET /payment/{id}` — Retrieve a payment
+### `GET /payment/{id}` â€” Retrieve a payment
 
 <details>
-<summary><b>200 OK</b> — Payment found</summary>
+<summary><b>200 OK</b> â€” Payment found</summary>
 
 ```json
 {
@@ -121,7 +121,7 @@ docker-compose up -d
 </details>
 
 <details>
-<summary><b>404 Not Found</b> — Payment not found</summary>
+<summary><b>404 Not Found</b> â€” Payment not found</summary>
 
 ```json
 {
