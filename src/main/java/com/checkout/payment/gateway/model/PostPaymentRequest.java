@@ -119,7 +119,6 @@ public class PostPaymentRequest implements Serializable {
         ", expiryYear=" + expiryYear +
         ", currency='" + currency + '\'' +
         ", amount=" + amount +
-        ", cvv=" + cvv +
         '}';
   }
 }
